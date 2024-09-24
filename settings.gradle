@@ -27,4 +27,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "TildaChatLibrary"
 include ':app'
-include ':tildamessaging'
+include ':tildachatmessaging'

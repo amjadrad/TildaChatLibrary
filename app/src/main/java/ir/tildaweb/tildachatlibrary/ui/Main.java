@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import ir.tildaweb.tildamessaging.JustText;
+import ir.tildaweb.tildachatmessaging.JustText;
 
 public class Main extends AppCompatActivity {
     @Override

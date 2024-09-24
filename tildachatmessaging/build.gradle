@@ -3,10 +3,9 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
 }
-group = 'com.github.amjadrad'
 
 android {
-    namespace 'ir.tildaweb.tildachatlibrary'
+    namespace 'ir.tildaweb.tildachatmessaging'
     compileSdk 33
 
     defaultConfig {
@@ -62,7 +61,7 @@ publishing {
     publications {
         release(MavenPublication) {
             groupId = 'com.github.amjadrad'
-            artifactId = 'tildachatlibrary'
+            artifactId = 'tildachatmessaging'
             version = '0.1.0'
             afterEvaluate {
                 from components.release
