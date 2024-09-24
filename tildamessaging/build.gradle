@@ -44,16 +44,16 @@ dependencies {
     androidTestImplementation libs.androidx.espresso.core
 }
 
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            // Creates a Maven publication called "release".
-//            release(MavenPublication) {
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
 //                from components.findByName('release')
-//                groupId = 'com.github.amjadrad'
-//                artifactId = 'TildaChatLibrary'
-//                version = '0.0.5'
-//            }
-//        }
-//    }
-//}
+                groupId = 'com.github.amjadrad'
+                artifactId = 'TildaChatLibrary'
+                version = '0.0.7'
+            }
+        }
+    }
+}
