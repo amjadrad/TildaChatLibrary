@@ -1059,68 +1059,62 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
     }
 
     protected void onRecordVoiceClicked() {
-        Log.d(TAG, "onRecordVoiceClicked: Record voice");
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            v.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(ChatroomMessagingActivity.this, new String[]{Manifest.permission.RECORD_AUDIO}, 0);
         } else {
-            //deprecated in API 26
-            v.vibrate(50);
-        }
-
-        isRecordingVoice = true;
-        binding.containerVoiceRecord.setVisibility(View.VISIBLE);
-        binding.imageViewSend.setVisibility(View.VISIBLE);
-        binding.imageViewVoice.setVisibility(View.GONE);
-        binding.imageViewFile.setVisibility(View.GONE);
-        binding.imageViewEmoji.setVisibility(View.GONE);
-        binding.etMessage.setVisibility(View.GONE);
-        binding.imageViewImage.setVisibility(View.GONE);
-
-        voiceCountDownTimer = new CountDownTimer(60000, 1000) {
-            @Override
-            public void onTick(long l) {
-                binding.tvVoiceTimer.setText(String.format("%s%s", (60000 - l) / 1000, "s"));
+            Log.d(TAG, "onRecordVoiceClicked: Record voice");
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                v.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                //deprecated in API 26
+                v.vibrate(50);
             }
 
-            @Override
-            public void onFinish() {
-                binding.tvVoiceTimer.setText(String.format("%s%s", 60, "s"));
-                binding.tvVoiceTimerNote.setText("حداکثر 60 ثانیه به پایان رسید.");
+            isRecordingVoice = true;
+            binding.containerVoiceRecord.setVisibility(View.VISIBLE);
+            binding.imageViewSend.setVisibility(View.VISIBLE);
+            binding.imageViewVoice.setVisibility(View.GONE);
+            binding.imageViewFile.setVisibility(View.GONE);
+            binding.imageViewEmoji.setVisibility(View.GONE);
+            binding.etMessage.setVisibility(View.GONE);
+            binding.imageViewImage.setVisibility(View.GONE);
+
+            voiceCountDownTimer = new CountDownTimer(60000, 1000) {
+                @Override
+                public void onTick(long l) {
+                    binding.tvVoiceTimer.setText(String.format("%s%s", (60000 - l) / 1000, "s"));
+                }
+
+                @Override
+                public void onFinish() {
+                    binding.tvVoiceTimer.setText(String.format("%s%s", 60, "s"));
+                    binding.tvVoiceTimerNote.setText("حداکثر 60 ثانیه به پایان رسید.");
 //                isMessageTimerOn = false;
 //                binding.tvMessageTimer.setVisibility(View.GONE);
 //                binding.tvMessageTimer.setText(String.format("%s%s", messageTimer, "s"));
 //                binding.imageViewSend.setVisibility(View.VISIBLE);
-            }
-        }.start();
+                }
+            }.start();
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        voicePath = getVoicePath();
-        voiceRecorder = MsRecorder.wav(
-                new File(voicePath),
-                // new AudioRecordConfig(), // 使用默认配置
-                new AudioRecordConfig(
-                        MediaRecorder.AudioSource.MIC, // 音频源
-                        44100, // 采样率，44100、22050、16000、11025 Hz
-                        AudioFormat.CHANNEL_IN_MONO, // 单声道、双声道/立体声
-                        AudioFormat.ENCODING_PCM_16BIT // 8/16 bit
-                ),
-                new PullTransport.Default()
-                        .setOnAudioChunkPulledListener(audioChunk -> Log.d("数据监听", "最大值: " + audioChunk.maxAmplitude()))
-        );
+            voicePath = getVoicePath();
+            voiceRecorder = MsRecorder.wav(
+                    new File(voicePath),
+                    // new AudioRecordConfig(), // 使用默认配置
+                    new AudioRecordConfig(
+                            MediaRecorder.AudioSource.MIC, // 音频源
+                            44100, // 采样率，44100、22050、16000、11025 Hz
+                            AudioFormat.CHANNEL_IN_MONO, // 单声道、双声道/立体声
+                            AudioFormat.ENCODING_PCM_16BIT // 8/16 bit
+                    ),
+                    new PullTransport.Default()
+                            .setOnAudioChunkPulledListener(audioChunk -> Log.d("数据监听", "最大值: " + audioChunk.maxAmplitude()))
+            );
 
-        voiceRecorder.startRecording(); // 开始
+            voiceRecorder.startRecording(); // 开始
 //        recorder.pauseRecording(); // 暂停
 //        recorder.resumeRecording(); // 重新开始
+        }
 
     }
 
@@ -1149,7 +1143,7 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
 
     }
 
-    protected void onActionAfterSendVoice(String uploadedPath){
+    protected void onActionAfterSendVoice(String uploadedPath) {
         EmitMessageStore emitMessageStore = new EmitMessageStore();
         emitMessageStore.setType(MessageType.VOICE);
         emitMessageStore.setMessage(uploadedPath);
