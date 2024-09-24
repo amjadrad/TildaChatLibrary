@@ -52,7 +52,7 @@ afterEvaluate {
 //                from components.findByName('release')
                 groupId = 'com.github.amjadrad'
                 artifactId = 'TildaChatLibrary'
-                version = '0.0.7'
+                version = '0.0.8'
             }
         }
     }
