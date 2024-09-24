@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace 'ir.tildaweb.tildachatmessaging'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 21
@@ -42,19 +42,61 @@ android {
 
 dependencies {
 
+
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.core:core-ktx:1.13.1'
+
+    // Java language implementation
+//    implementation "androidx.fragment:fragment:1.8.3"
+    // Kotlin
+//    implementation "androidx.fragment:fragment-ktx:1.8.3"
+    // Testing Fragments in Isolation
+    debugImplementation "androidx.fragment:fragment-testing:1.8.3"
+    //SocketIO
+    implementation('io.socket:socket.io-client:2.1.1') {
+        exclude group: 'org.json', module: 'json'
+    }
+    //GSON
+    implementation 'com.google.code.gson:gson:2.11.0'
+    //scalable size unit
+    implementation 'com.intuit.sdp:sdp-android:1.1.1'
+    //scalable size unit for texts
+    implementation 'com.intuit.ssp:ssp-android:1.1.1'
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    //Circle ImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //Zoom picture
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    //Persian Date Calendar
+    implementation 'com.github.hamsaadev:Persian-Date-Picker-Dialog:V1.0'
+    //Tilda file picker
+    implementation 'com.github.amjadrad:TildaFilePicker:1.8'
+    //Emoji
+    implementation "io.github.aghajari:AXEmojiView:1.5.2"
+    implementation "io.github.aghajari:AXEmojiView-AppleProvider:1.5.2"
+    //ExoPlayer
+    implementation "androidx.media3:media3-exoplayer:1.4.1"
+    implementation "androidx.media3:media3-ui:1.4.1"
+    implementation "androidx.media3:media3-common:1.4.1"
+//    implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
+    //Swipe to dismiss
+    implementation 'com.r0adkll:slidableactivity:2.1.0'
+    //TextviewLink
+    implementation 'me.saket:better-link-movement-method:2.2.0'
+    //Blur
+    implementation 'com.github.Dimezis:BlurView:version-2.0.3'
+    //Voice recorder
+    implementation 'com.github.shaoshuai904:RecordWav:1.2.2'
+
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-//    implementation libs.fragment.ktx
-//    implementation libs.androidx.core.ktx
-//    implementation libs.androidx.appcompat
-//    implementation libs.material
-//    testImplementation libs.junit
-//    androidTestImplementation libs.androidx.junit
-//    androidTestImplementation libs.androidx.espresso.core
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+
 }
 
 publishing {
