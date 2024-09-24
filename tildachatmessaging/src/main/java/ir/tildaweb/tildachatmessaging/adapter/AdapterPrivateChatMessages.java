@@ -2132,7 +2132,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 } else {
                     holder.binding.imageViewSeen.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_chat_single_check));
                 }
-                holder.binding.coordinatorPlayVoice.setOnClickListener(view -> onPlayVoice(chatMessage));
+                holder.binding.coordinatorPlayVoice.setOnClickListener(view -> iChatUtils.onPlayVoice(chatMessage));
                 holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.tvTime, chatMessage, true, false, false, false));
                 break;
             }
@@ -2144,8 +2144,8 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 String normalizedDate = chatMessage.getCreatedAt().replace(".000Z", "").replace("T", " ");
                 DateUtils.DateObject dateObject = dateHelper.getParsedDate(normalizedDate);
                 holder.binding.tvTime.setText(getTime(dateObject));
-                holder.binding.coordinatorPlayVoice.setOnClickListener(view -> onPlayVoice(chatMessage));
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.tvTime, chatMessage, true, false, false, false));
+                holder.binding.coordinatorPlayVoice.setOnClickListener(view -> iChatUtils.onPlayVoice(chatMessage));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.tvTime, chatMessage, false, false, false, false));
                 break;
             }
 
@@ -2231,10 +2231,6 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 break;
             }
         }
-    }
-
-    protected void onPlayVoice(Message chatMessage) {
-
     }
 
     public int getItemCount() {

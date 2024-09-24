@@ -25,4 +25,6 @@ public interface IChatUtils {
     void onMessageItemUserInfoClick(Message message);
 
     void onMessageTextLinkClick(String link);
+
+    void onPlayVoice(Message message);
 }

@@ -868,6 +868,11 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
     }
 
     @Override
+    public void onPlayVoice(Message message) {
+
+    }
+
+    @Override
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.imageViewBack) {
