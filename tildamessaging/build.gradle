@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
-//    id 'maven-publish'
+    id 'maven-publish'
 }
 
-group = 'com.github.amjadrad'
-version = '0.0.5'
+//group = 'com.github.amjadrad'
+//ArtifactId = 'TildaChatLibrary'
+//version = '0.0.5'
 
 android {
     namespace 'ir.tildaweb.tildamessaging'
