@@ -3,6 +3,9 @@ plugins {
     id 'maven-publish'
 }
 
+group = 'com.github.amjadrad'
+version = '0.0.3'
+
 android {
     namespace 'ir.tildaweb.tildamessaging'
     compileSdk 34
@@ -35,4 +38,18 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.findByName('release')
+                groupId = 'com.github.amjadrad'
+                artifactId = 'TildaChatLibrary'
+                version = '0.0.3'
+            }
+        }
+    }
 }
