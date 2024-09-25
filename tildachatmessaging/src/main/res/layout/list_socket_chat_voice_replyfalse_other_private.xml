@@ -89,7 +89,7 @@
             android:clickable="true"
             android:focusable="true">
 
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_32sdp"
                 android:layout_height="@dimen/_32sdp"
                 android:layout_gravity="center"
@@ -97,7 +97,8 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
-                android:background="@drawable/bg_primary_rounded_default">
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/_10sdp">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/_20sdp"
@@ -106,7 +107,7 @@
                     android:tint="@color/colorWhite"
                     app:srcCompat="@drawable/ic_play_ic" />
 
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </androidx.cardview.widget.CardView>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

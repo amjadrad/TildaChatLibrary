@@ -1095,6 +1095,7 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
                 public void onFinish() {
                     binding.tvVoiceTimer.setText(String.format("%s%s", 60, "s"));
                     binding.tvVoiceTimerNote.setText("حداکثر 60 ثانیه به پایان رسید.");
+                    voiceRecorder.pauseRecording();
 //                isMessageTimerOn = false;
 //                binding.tvMessageTimer.setVisibility(View.GONE);
 //                binding.tvMessageTimer.setText(String.format("%s%s", messageTimer, "s"));
