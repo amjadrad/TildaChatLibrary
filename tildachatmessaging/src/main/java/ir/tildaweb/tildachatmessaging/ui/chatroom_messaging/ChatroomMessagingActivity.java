@@ -127,7 +127,14 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
     private Recorder voiceRecorder;
     private String voicePath = null;
     private boolean isRecordingVoice = false;
+    private int voiceRateInHz = 44100;//44100、22050、16000、11025 Hz
 
+    public enum VOICE_RATE_TYPES {
+        VOICE_RATE_44100,
+        VOICE_RATE_22050,
+        VOICE_RATE_16000,
+        VOICE_RATE_11025,
+    }
     //Swipe to finish
 //    private static final int SWIPE_MIN_DISTANCE = 120;
 //    private static final int SWIPE_MAX_OFF_PATH = 250;
@@ -274,6 +281,15 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
             binding.tvUserName.setTypeface(typeface);
             binding.tvUpdateMessage.setTypeface(typeface);
             binding.etMessage.setTypeface(typeface);
+        }
+    }
+
+    protected void setVoiceRateInHz(VOICE_RATE_TYPES voiceRateType) {
+        switch (voiceRateType) {
+            case VOICE_RATE_44100 -> voiceRateInHz = 44100;
+            case VOICE_RATE_22050 -> voiceRateInHz = 22050;
+            case VOICE_RATE_16000 -> voiceRateInHz = 16000;
+            case VOICE_RATE_11025 -> voiceRateInHz = 11025;
         }
     }
 
@@ -1109,7 +1125,7 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
                     // new AudioRecordConfig(), // 使用默认配置
                     new AudioRecordConfig(
                             MediaRecorder.AudioSource.MIC, // 音频源
-                            44100, // 采样率，44100、22050、16000、11025 Hz
+                            voiceRateInHz, // 采样率，44100、22050、16000、11025 Hz
                             AudioFormat.CHANNEL_IN_MONO, // 单声道、双声道/立体声
                             AudioFormat.ENCODING_PCM_16BIT // 8/16 bit
                     ),
