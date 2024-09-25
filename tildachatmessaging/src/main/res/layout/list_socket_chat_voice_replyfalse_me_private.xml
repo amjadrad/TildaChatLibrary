@@ -47,28 +47,12 @@
                     android:background="@drawable/bg_light_rounded_default">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
                         android:layout_gravity="center"
                         android:tint="@color/colorPrimary"
-                        app:srcCompat="@drawable/ic_mic" />
+                        app:srcCompat="@drawable/ic_play_ic" />
 
-
-                </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-                <androidx.coordinatorlayout.widget.CoordinatorLayout
-                    android:id="@+id/coordinatorDownloadedFile"
-                    android:layout_width="@dimen/_14sdp"
-                    android:layout_height="@dimen/_14sdp"
-                    android:layout_gravity="bottom|left"
-                    android:background="@drawable/bg_badge_fill_primary">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="@dimen/_6sdp"
-                        android:layout_height="@dimen/_6sdp"
-                        android:layout_gravity="center"
-                        android:tint="@color/colorPrimary"
-                        app:srcCompat="@drawable/ic_play" />
 
                 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -90,7 +74,7 @@
                     android:paddingTop="@dimen/_4sdp"
                     android:paddingRight="@dimen/_8sdp"
                     android:paddingBottom="@dimen/_4sdp"
-                    android:text="...."
+                    android:text="پیام صوتی"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/_10ssp"
                     android:textStyle="normal" />
