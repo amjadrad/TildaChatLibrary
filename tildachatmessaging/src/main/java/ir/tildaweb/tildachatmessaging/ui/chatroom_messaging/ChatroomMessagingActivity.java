@@ -520,9 +520,9 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
                             adapterPrivateChatMessages.getMessagePosition(searchMessageId, AdapterPrivateChatMessages.SearchType.REPLY);
                         } else {
 //                            adapterPrivateChatMessages.setUserReadPreviousMessage(nextPage != 1);
-//                            if (nextPage == 1) {
-//                                binding.recyclerViewMessages.smoothScrollToPosition(adapterPrivateChatMessages.getItemCount() - 1);
-//                            }
+                            if (nextPage <= 2) {
+                                binding.recyclerViewMessages.smoothScrollToPosition(adapterPrivateChatMessages.getItemCount() - 1);
+                            }
                         }
                     }
                 } else if (response.getStatus() == 404 && adapterPrivateChatMessages.getItemCount() == 0) {
