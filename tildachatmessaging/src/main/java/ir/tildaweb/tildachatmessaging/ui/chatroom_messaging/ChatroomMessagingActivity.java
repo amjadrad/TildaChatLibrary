@@ -519,7 +519,7 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
                         if (isSearchForReply) {
                             adapterPrivateChatMessages.getMessagePosition(searchMessageId, AdapterPrivateChatMessages.SearchType.REPLY);
                         } else {
-                            adapterPrivateChatMessages.setUserReadPreviousMessage(false);
+                            adapterPrivateChatMessages.setUserReadPreviousMessage(nextPage != 1);
                             binding.recyclerViewMessages.smoothScrollToPosition(adapterPrivateChatMessages.getItemCount() - 1);
                         }
                     }
@@ -861,7 +861,6 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
         emitMessageSeen.setUserId(userId);
         emitMessageSeen.setRoomId(roomId);
         emitMessageSeen.setChatroomId(chatroomId);
-        Log.d(TAG, "onMessageSeen: --------------------->");
         Log.d(TAG, "onMessageSeen: " + DataParser.toJson(emitMessageSeen));
         TildaChatApp.getSocketRequestController().emitter().emitMessageSeen(emitMessageSeen);
     }
