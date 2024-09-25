@@ -16,6 +16,7 @@ import android.os.Looper;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
@@ -585,11 +586,16 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
     @Override
     public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
         Message chatMessage = chatMessages.get(holder.getAdapterPosition());
+        Log.d(TAG, "onViewAttachedToWindow: " + chatMessage.getSeenCount());
         if (chatMessage.getUserId() != userId) {
             if (chatMessage.getSeenCount() == 0) {
+                Log.d(TAG, "onViewAttachedToWindow: " + chatMessage.getSeenCount());
                 iChatUtils.onMessageSeen(chatMessage.getId());
+            }else{
+                Log.d(TAG, "onViewAttachedToWindow: " + chatMessage.getSeenCount());
             }
         }
+        Log.d(TAG, "onViewAttachedToWindow: -------------------------------");
     }
 
     @NonNull
